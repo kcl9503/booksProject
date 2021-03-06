@@ -72,11 +72,7 @@
 </template>
 
 <script>
-
 export default {
-  components:{
-
-  },
   data(){
       return{
         count: 1,
@@ -127,7 +123,6 @@ export default {
       .catch(err=>{console.log(err)})
     },
   }
-
 }
 </script>
 

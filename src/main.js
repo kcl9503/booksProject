@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import Axios from 'axios'
 import api from '@/api/index.js'
+
+//UI
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -15,8 +16,9 @@ Vue.use(Vuetify)
 Vue.use(ElementUI);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-Vue.prototype.$axios = Axios
+
 Vue.prototype.$api = api
+
 Vue.config.productionTip = false
 
 new Vue({
