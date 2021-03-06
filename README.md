@@ -1,8 +1,9 @@
-# interview
+# Unnotech Frontend Engineer 徵才小專案
 
-## Project setup
+## 開啟方法
 ```
-npm install
+Vue Cli
+$ npm run serve
 ```
 
 ### Compiles and hot-reloads for development

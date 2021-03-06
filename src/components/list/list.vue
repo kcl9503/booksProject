@@ -1,6 +1,5 @@
 <template>
   <div>
-    <b-alert show variant="success"><a href="#" class="alert-link">Success Alert</a></b-alert>
     <div class="list">
       <div class="block" v-for="list in firstDataList" :key="list.id">
         <router-link :to="{name:'detail', params:{id:list.id}}">
@@ -68,35 +67,6 @@
           </v-card-text>
         </div>
       </v-expand-transition>
-<!-- 
-    <div class="block">
-    <b-card-group v-for="list in firstDataList" :key="list.id" deck 
-      :class="visible ? null : 'collapsed'"
-      :aria-expanded="visible ? 'true' : 'false'"
-      @click="modifyColumn()">
-      <router-link :to="{name:'detail', params:{id:list.id}}">
-      <b-card :title='list.name' :img-src='list.image' img-top  :aria-controls='list.name'>
-      </b-card></router-link>
-          <b-collapse :id='list.name' v-model="firstVisible" class="mt-2">
-      <b-card>I should start open!</b-card>
-    </b-collapse>
-    </b-card-group>
-
-    </div>
-    <div class="block">
-    <b-card-group v-for="list in secondDataList" :key="list.id" deck 
-     :class="visible ? null : 'collapsed'"
-      :aria-expanded="visible ? 'true' : 'false'"
-      aria-controls="collapse-4"
-      @click="secondVisible = !secondVisible">
-      <router-link :to="{name:'detail', params:{id:list.id}}">
-      <b-card :title='list.name' :img-src='list.image' img-top>
-      </b-card></router-link>
-    </b-card-group>
-    <b-collapse id="collapse-4" v-model="secondVisible" class="mt-2">
-      <b-card>I should start open!</b-card>
-    </b-collapse>
-    </div> -->
     </div>
   </div>
 </template>
@@ -109,9 +79,6 @@ export default {
   },
   data(){
       return{
-        // firstVisible: false,
-        // secondVisible: false,
-
         count: 1,
         firstDataList: [],
         id: '',
@@ -126,28 +93,38 @@ export default {
     .then(res=>{
       this.firstDataList = res.data.slice(0,3);
       this.secondDataList = res.data.slice(3)
-      console.log(this.secondDataList)
     })
     .catch(err=>{console.log(err)})
   },
   methods:{
     getBooksDetail(id){
       this.id = id;
-      id <= 3 ? 
-      this.firstShow = !this.firstShow:
-      this.secondShow = !this.secondShow
+      if(id <= 3){ 
+        this.firstShow = !this.firstShow
+        this.secondShow = false;
+      }else{
+        this.firstShow = false
+        this.secondShow = !this.secondShow
+      }
       this.$api.getDetail(id)
       .then(res=>{
         this.count = res.data.count;
         this.price = res.data.price;
-        console.log(res)
       })
+      .catch(err=>{console.log(err)})
     },
     sendData(){
        this.$api.submitData(this.id, this.count, this.price)
       .then(res=>{
-        console.log(res)
+        if(res.status === 200){
+          this.$notify({
+          title: '成功修改',
+          type: 'success',
+          duration: 2000
+        });
+        }        
       })
+      .catch(err=>{console.log(err)})
     },
   }
 
