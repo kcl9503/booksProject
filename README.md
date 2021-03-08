@@ -4,7 +4,7 @@
 ```
 Vue Cli
 $ npm run serve
-or https://kcl9503.github.io/booksProject/
+or https://kcl9503.github.io/books/
 ```
 
 ## 架構與邏輯
