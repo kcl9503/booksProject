@@ -153,12 +153,32 @@ export default {
 }
 .dollarCount{
   width: 26%;
-  margin-right: 25rem;
+  margin-right: 50rem;
 }
 .sendBtn{
   width: 100%;
 }
 
+@media screen and (max-width: 1650px){
+  .dollarCount{
+      margin-right:40rem;
+  }
+}
+@media screen and (max-width: 1440px){
+  .dollarCount{
+      margin-right:35rem;
+  }
+}
+@media screen and (max-width: 1300px){
+  .dollarCount{
+      margin-right: 25rem;
+  }
+}
+@media screen and (max-width: 1050px){
+  .dollarCount{
+      margin-right: 10rem;
+  }
+}
 @media screen and (max-width: 600px) {
   .list{
     display: block;
