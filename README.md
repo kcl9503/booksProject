@@ -4,9 +4,8 @@
 ```
 Vue Cli
 $ npm run serve
-or https://kcl9503.github.io/books/
+or https://kcl9503.github.io/booksProject/
 ```
-
 ## 架構與邏輯
 ```
 Axios
